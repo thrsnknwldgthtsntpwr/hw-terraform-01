@@ -68,5 +68,17 @@ b4363a28c435   66f8bdd3810c   "/docker-entrypoint.…"   10 seconds ago   Up 9 s
 - Опасность применения ключа -auto-approve заключается в том, что можно в момент потерять всю инфраструктуру
 - Данный ключ может пригодиться в скриптах
 7. Уничтожьте созданные ресурсы с помощью terraform. Убедитесь, что все ресурсы удалены. Приложите содержимое файла terraform.tfstate.
+```
+{
+  "version": 4,
+  "terraform_version": "1.10.2",
+  "serial": 25,
+  "lineage": "7d09568a-5f25-6995-2136-5a6b02f79971",
+  "outputs": {},
+  "resources": [],
+  "check_results": null
+}
+```
 8. Объясните, почему при этом не был удалён docker-образ nginx:latest. Ответ ОБЯЗАТЕЛЬНО НАЙДИТЕ В ПРЕДОСТАВЛЕННОМ КОДЕ, а затем ОБЯЗАТЕЛЬНО ПОДКРЕПИТЕ строчкой из документации terraform провайдера docker. (ищите в классификаторе resource docker_image )
-
+- Потому что задан параметр `keep_locally = true`
+> keep_locally (Boolean) If true, then the Docker image won't be deleted on destroy operation. If this is false, it will delete the image from the docker ...
